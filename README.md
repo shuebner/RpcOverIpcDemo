@@ -16,10 +16,21 @@ Hence the demo of a relatively simple and unintrusive way to get transparent RPC
 The Demo covers the simple use case of calling a service method and getting a result back.
 It does not deal with exceptions or anything regarding the lifecycle of a remote object.
 
+## Design
+
 The in-process interfaces and classes are ignorant of the RPC chain around them, as they should be.
+
+The RPC stubs are boilerplate and could be generated, just like the request/response pairs.
+In principle we could generate the entire interface-specific RPC infrastructure (including a factory that hides the fact that RPC is even happening) from the interface definition alone (like gRPC does).
+If I find the time, I may write a [SourceGenerator](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview) for that as an exercise.
 
 The demo uses [SharedMemory](https://github.com/spazzarama/SharedMemory) as transport and [MessagePack](https://msgpack.org/) as serialization format (via [neuecc's library](https://github.com/neuecc/MessagePack-CSharp)).
 Both are hidden behind interfaces and can be easily replaced with other implementations, e. g. pipes as transport, ProtoBuf as serialization format.
+
+The request/response pairs are independent of the serialization.
+This works with MessagePack, because between two .NET processes the MessagePack library can use contractless serialization.
+
+## See how it works
 
 Debug through the test project to follow the data.
 To debug the real process test on both ends, add a breakpoint in the test method line at which `DoStuffWithFoo` is called.
