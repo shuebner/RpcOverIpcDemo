@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InProcessImplementation\InProcessImplementation.csproj" />
+    <ProjectReference Include="..\Rpc.InterfaceStub\Rpc.InterfaceStub.csproj" />
+    <ProjectReference Include="..\Rpc\Rpc.csproj" />
+  </ItemGroup>
+
+</Project>
