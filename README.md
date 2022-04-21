@@ -1,9 +1,16 @@
 # RpcOverIpcDemo
 Demonstrates how to do RPC from a .NET 5 process to a .NET Framework 4.8 process.
 
+**NOTE:**
+Some crucial statements in the "Why" section turned out to be false.
+Because they were the reason to even create this demo, I left them in for context.
+More information on the confusion can be found in [this comment](https://github.com/grpc/grpc-dotnet/issues/1368#issuecomment-962822211).
+Now, back to the original context in which the demo was created:
+
 ## Why
 .NET remoting has long been deprecated in favor of WCF.
 But, just like .NET remoting, WCF is no longer available in .NET Core.
+
 Microsoft's recommendation to go forward was gRPC.
 Unfortunately gRPC has decided to no longer support .NET Framework servers.
 [People are upset](https://github.com/grpc/grpc-dotnet/issues/1368).
